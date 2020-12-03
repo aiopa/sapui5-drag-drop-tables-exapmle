@@ -1,0 +1,52 @@
+<mvc:View controllerName="test.DragDrop.controller.View1" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m"
+	xmlns:dnd="sap.ui.core.dnd" xmlns:t="sap.ui.table">
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="{i18n>title}">
+					<content>
+						<FlexBox>
+							<Table mode="MultiSelect" id="tableone" items="{tableone>/results}">
+								<headerToolbar>
+									<OverflowToolbar>
+										<content>
+											<ToolbarSpacer/>
+											<Input placeholder="serach..." submit="filter"/>
+										</content>
+									</OverflowToolbar>
+								</headerToolbar>
+								<columns>
+									<Column><Text text="Name"/></Column>
+									<Column demandPopin="true" minScreenWidth="2000px"><Text text="Description"/></Column>
+									<Column><Text text="Manufacturer"/></Column>
+								</columns>
+								<dragDropConfig>
+									<dnd:DragDropInfo targetElement="tabletwo" sourceAggregation="items" targetAggregation="items" dropPosition="On" drop="onDrop"/>
+								</dragDropConfig>
+								<items>
+									<ColumnListItem>
+										<cells>
+											<Text text="{tableone>name}" wrapping="false"/>
+											<Text text="{tableone>desc}" wrapping="false"/>
+											<Text text="{tableone>manu}" wrapping="false"/>
+										</cells>
+									</ColumnListItem>
+								</items>
+								<layoutData>
+									<FlexItemData growFactor="1" baseSize="0" backgroundDesign="Solid" styleClass="sapUiTinyMargin"/>
+								</layoutData>
+							</Table>
+							<Tree id="tabletwo" items="{tabletwo>/results}">
+								<StandardTreeItem title="{tabletwo>name}"/>
+								<dragDropConfig/>
+								<layoutData>
+									<FlexItemData growFactor="1" baseSize="0" backgroundDesign="Solid" styleClass="sapUiTinyMargin"/>
+								</layoutData>
+							</Tree>
+						</FlexBox>
+					</content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>
